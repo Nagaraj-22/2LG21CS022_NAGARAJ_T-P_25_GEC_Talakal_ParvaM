@@ -16,6 +16,8 @@ public class Student {
     private String name;
     private String email;
     private String phone;
+    private String dob;
+    private String adress;
     
     public Long getId( ) {
         return id;
@@ -40,6 +42,18 @@ public class Student {
     }
     public void setPhone(String phone){
         this.phone = phone;
+    }
+     public String getDob(){
+        return dob;
+    }
+    public void setDob(String dob){
+        this.dob = dob;
+    }
+    public String getAdress(){
+        return adress;
+    }
+    public void setAdress(String adress){
+        this.adress = adress;
     }
 
 

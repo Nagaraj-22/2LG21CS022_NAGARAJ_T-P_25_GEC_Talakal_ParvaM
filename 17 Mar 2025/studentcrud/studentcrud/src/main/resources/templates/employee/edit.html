@@ -7,6 +7,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <div th:replace="fragments/nav :: nav"></div>
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="w-50">
             <h1 class="mt-5 text-center">Edit Employee</h1>
@@ -24,6 +25,35 @@
                     <label for="phone">Phone</label>
                     <input type="number" class="form-control" id="employeePhone" th:field="*{phone}" placeholder="Enter employee Phone">
                 </div>
+                <div class="form-group">
+                    <label for="employeeAdress"><b>Adress</b></b></label>
+                    <input type="text" class="form-control" id="employeeAdress" th:field="*{adress}"
+                        placeholder="Enter employee Adress">
+                </div>
+                <div class="form-check">
+                        <label for="employeetAge">Gender</label><br>
+                        <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="male" th:field="*{gender}">
+                        <label class="form-check-label" for="gridRadios1">
+                        Male
+                        </label>
+                </div>
+                <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="female" th:field="*{gender}">
+                        <label class="form-check-label" for="gridRadios2">
+                        Female
+                        </label>
+                </div>
+                <div class="form-group">
+                        <label for="qualification">Qualification:</label><br>
+                        <input type="checkbox" id="SSLC" th:field="*{qualification}" name="qualification" value="SSLC">
+                        <label for="qualification1">SSLC</label><br>
+                        <input type="checkbox" id="PUC" th:field="*{qualification}" name="qualification" value="PUC">
+                        <label for="qualification2">PUC</label><br>
+                        <input type="checkbox" id="DEGREE" th:field="*{qualification}" name="qualification" value="DEGREE">
+                        <label for="qualification3">DEGREE</label><br>
+                        <input type="checkbox" id="PHD" th:field="*{qualification}" name="qualification" value="PHD">
+                        <label for="qualification3">PHD</label><br><br>
+                </div>
                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
         </div>

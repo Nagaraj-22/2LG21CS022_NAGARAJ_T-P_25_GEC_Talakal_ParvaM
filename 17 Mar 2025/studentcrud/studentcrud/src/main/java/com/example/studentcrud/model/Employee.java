@@ -16,7 +16,9 @@ public class Employee {
     private String name;
     private String email;
     private String phone;
-    
+    private String adress;
+    private String gender;
+    private String qualification;
     public Long getId( ) {
         return id;
     }
@@ -41,6 +43,23 @@ public class Employee {
     public void setPhone(String phone){
         this.phone = phone;
     }
-
+    public String getAdress(){
+        return adress;
+    }
+    public void setAdress(String adress){
+        this.adress = adress;
+    }
+     public String getGender(){
+        return gender;
+    }
+    public void setGender(String gender){
+        this.gender = gender;
+    }
+     public String getQualification(){
+        return qualification;
+    }
+    public void setQualification(String qualification){
+        this.qualification = qualification;
+    }
 
 }
