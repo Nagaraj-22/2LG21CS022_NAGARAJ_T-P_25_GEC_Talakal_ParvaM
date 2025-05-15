@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Spring Boot Students Employees Staffs Profile</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f4f4f4;
+    }
+
+    .profile-form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      width: 300px;
+    }
+
+    .profile-form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .profile-form input[type="text"],
+    .profile-form select {
+      width: calc(100% - 12px);
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .profile-form button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .profile-card {
+      width: 300px;
+      background-color: #e0e0e0;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      position: relative;
+    }
+
+    .profile-card img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .profile-card button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: none;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <form method="get">
+    <div class="profile-form">
+      <h2 class="text-center">Profile Form</h2>
+      <div class="container">
+        <div class="row justify-content--center">
+          <div class="col-md-6">
+            <form th:action="{/profile/save}" th:object="${newprofile}" method="post"
+              class="p-4 border rounded shadow bg-light">
+              <div class="mb-3">
+                <label for="name"><b>Name:<b></label>
+                <input type="text" id="name" name="name">
+              </div><br>
+              <div>
+                <label>Gender</label>
+                <label><input type="radio" id="male" name="gender" value="male">Male<input type="radio" id="female"
+                    name="gender" value="female">Female</label>
+              </div>
+              <br>
+              <br>
+              <div>
+                <label for="color"><b>Color:<b></label>
+                <input type="color" class="form-control" id="profileColor" placeholder="Enter profile color">
+              </div>
+
+              <br>
+              <div>
+                <label for="font"><b>fontsize:<b></label>
+                <input type="range" value="24" min="1" max="100" oninput="this.nextElementSibling.value = this.value">
+                <output>24</output>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block"><b>Submit<b></button><br>
+              <br>
+          </div>
+  </form>
+  <br>
+
+  <br>
+  <div class="container">
+    <div class="row justify-content-center" th:if="${profiles}">
+      <div th:each="stu:${profiles}" class="col-md-4 text-center">
+        <div class="Profile-card shadow" th:style="'background-color:' +${stu.color}">
+          <img th:src="${stu.gender == 'male' ? '/image/male.png' : '/image/female.png'}" alt="Profile-image"
+            class="profile-image">
+          <h2 th:text="${stu.name}" th:style="'font-size:' + ${stu.fontsize} + 'px'"></h2>
+          <a th:href="@{/profile/delete/{id}(id=${stu.id})}" class="text-danger" title="Delete">
+            <i class="bi bi-trash fs-3"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function updateTextInput(val) {
+      document.getElementById('fontSizeValue').textContent = val;
+    }
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+
+</body>
+
+</html>
